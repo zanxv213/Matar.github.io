@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI image Editor</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @tailwind base;
+      @tailwind components;
+      @tailwind utilities;
+
+      @layer base {
+        body {
+          background-color: #0d0f1a;
+          font-family: 'Inter', sans-serif;
+        }
+        
+        html {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+        }
+      }
+
+      @layer components {
+        /* Main app background, applied to root div */
+        .app-background {
+          background-image: 
+            radial-gradient(ellipse at 20% 20%, rgba(66, 73, 153, 0.4) 0%, transparent S60%),
+            radial-gradient(ellipse at 80% 70%, rgba(121, 58, 158, 0.3) 0%, transparent 60%);
+          background-attachment: fixed;
+        }
+        
+        /* Glassmorphism Panel Style */
+        .glass-panel {
+          @apply bg-gray-900/60 border border-white/10 rounded-2xl;
+          backdrop-filter: blur(16px) saturate(180%);
+          -webkit-backdrop-filter: blur(16px) saturate(180%);
+        }
+
+        /* Modern Button Styles */
+        .btn {
+          @apply px-4 py-3 rounded-lg font-semibold text-sm transition-all duration-200 ease-in-out border border-transparent disabled:opacity-40 disabled:cursor-not-allowed text-center w-full;
+        }
+        .btn:hover:not(:disabled) {
+          @apply -translate-y-0.5 shadow-lg;
+        }
+
+        /* Primary Button */
+        .btn-primary {
+          @apply bg-gradient-to-r from-violet-700 to-purple-500 text-white;
+        }
+        .btn-primary:hover:not(:disabled) {
+          @apply shadow-purple-500/20;
+        }
+
+        /* Secondary Button */
+        .btn-secondary {
+          @apply bg-white/5 border-white/15 text-slate-200;
+        }
+        .btn-secondary:hover:not(:disabled) {
+          @apply bg-white/10 border-white/25;
+        }
+        
+        /* Save Button */
+        .btn-save {
+          @apply bg-gradient-to-r from-emerald-600 to-green-500 text-white;
+        }
+        .btn-save:hover:not(:disabled) {
+          @apply shadow-green-500/20;
+        }
+        
+        /* Destructive Button */
+        .btn-destructive {
+          @apply bg-gradient-to-r from-red-700 to-red-600 text-white;
+        }
+        .btn-destructive:hover:not(:disabled) {
+          @apply shadow-red-500/20;
+        }
+
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+          transform: translateX(100%);
+          @apply bg-violet-300;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+          @apply bg-violet-700;
+        }
+        .toggle-checkbox {
+          @apply transition-all duration-200 ease-in-out;
+        }
+      }
+
+      @layer utilities {
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(10px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+          animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        /* Custom Scrollbar for the sidebar */
+        .custom-scrollbar::-webkit-scrollbar {
+          width: 8px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+          background: rgba(139, 92, 246, 0.5);
+          border-radius: 10px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+          background: rgba(139, 92, 246, 0.8);
+        }
+      }
+    </style>
+    <script type="importmap">
+{
+  "imports": {
+    "react": "https://aistudiocdn.com/react@^19.1.1",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.1.1/",
+    "react/": "https://aistudiocdn.com/react@^19.1.1/",
+    "vite": "https://aistudiocdn.com/vite@^7.1.5",
+    "@vitejs/plugin-react": "https://aistudiocdn.com/@vitejs/plugin-react@^5.0.2",
+    "@google/genai": "https://aistudiocdn.com/@google/genai@^1.19.0",
+    "tailwindcss/": "https://aistudiocdn.com/tailwindcss@^4.1.13/"
+  }
+}
+</script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

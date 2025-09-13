@@ -1,0 +1,5 @@
+{
+  "name": "Shirt Texture Editor",
+  "description": "An application to upload a shirt texture, select an area, and perform edits like remove, fix, or modify using AI. Strictly follows the user's requirements for a minimal, functional interface.",
+  "requestFramePermissions": []
+}
